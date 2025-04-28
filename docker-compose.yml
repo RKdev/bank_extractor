@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  bank-extractor:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      # Only mount data directory to avoid overwriting installed dependencies
+      - ./data:/app/data
+    environment:
+      # Optional environment variables for configuration
+      - INPUT_DIR=/app/data/input
+      - OUTPUT_DIR=/app/data/output
+      - OUTPUT_FILENAME=bank_transactions.tsv
